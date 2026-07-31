@@ -1,0 +1,1 @@
+export {default as OpenLayerComponent} from './ui/OpenLayerComponent'
