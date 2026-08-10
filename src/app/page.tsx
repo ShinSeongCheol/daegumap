@@ -1,10 +1,10 @@
-import { cookies } from "next/headers";
-import { OpenLayerComponent } from "../features/openlayer";
-import { createClient } from "@/src/utils/supabase/server";
-import { CommercialArea } from "../types";
+import {redirect} from "next/navigation";
 
 export default async function Home() {
+
+  redirect('/dashboard');
+
   return (
-      <OpenLayerComponent></OpenLayerComponent>
+      <></>
   );
 }

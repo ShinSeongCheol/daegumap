@@ -8,6 +8,8 @@ import VectorSource from "ol/source/Vector";
 import Icon from "ol/style/Icon";
 import Style from "ol/style/Style";
 import { useEffect, useRef } from "react";
+import {XYZ} from "ol/source";
+import {defaults} from "ol/control";
 
 interface Props {
     center?: [number, number],
@@ -65,6 +67,10 @@ export default function OpenLayerComponent({center=[128.6014, 35.8714], zoom=13,
                 center: fromLonLat(center),
                 zoom: 13
             }),
+            controls: defaults({
+                zoom: false,
+                rotate: false,
+            }),
             layers: [
                 new TileLayer({
                     source: new XYZ({
@@ -78,6 +84,6 @@ export default function OpenLayerComponent({center=[128.6014, 35.8714], zoom=13,
     }, [center, zoom, url])
 
     return (
-        <div ref={mapRef} className="w-screen h-screen"></div>
+        <div ref={mapRef} className="absolute w-full h-full"></div>
     )
 }
