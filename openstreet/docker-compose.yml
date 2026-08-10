@@ -1,0 +1,43 @@
+services:
+  osm-import:
+    image: "overv/openstreetmap-tile-server:latest"
+    container_name: osm_tile_server_import
+    volumes:
+      - ./korea-latest-non-military.osm.pbf:/data/region.osm.pbf
+      - osm-data:/data/database
+    command:
+      - import
+
+  osm-nginx:
+    image: "nginx:latest"
+    container_name: osm_tile_nginx
+    ports:
+      - "8080:8080"
+    volumes:
+      - osm-nginx:/etc/nginx/
+      - ./osm-server.conf:/etc/nginx/conf.d/osm-server.conf
+
+  osm-server:
+    image: "overv/openstreetmap-tile-server:latest"
+    container_name: osm_tile_server
+    volumes:
+      - osm-data:/data/database/
+    command:
+      - run
+
+  database:
+    image: "postgres:latest"
+    container_name: postgres
+    environment:
+      POSTGRES_USER: daegumap
+      POSTGRES_PASSWORD: daegumap
+      POSTGRES_DB: daegumap
+    ports:
+      - "15432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql
+
+volumes:
+  osm-data:
+  osm-nginx:
+  postgres-data:
