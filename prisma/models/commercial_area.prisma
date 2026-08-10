@@ -1,4 +1,4 @@
-model Commercial_area {
+model CommercialArea {
   business_id                             String  @id
   business_name                           String
   branch_name                             String?
@@ -38,4 +38,6 @@ model Commercial_area {
   ho_information                          String
   longitude                               Float
   latitude                                Float
+
+  @@map("commercial_area")
 }
