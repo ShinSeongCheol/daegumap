@@ -1,16 +1,13 @@
 'use client';
 
-import { Feature, Map, Overlay, View } from "ol";
-import { Point } from "ol/geom";
+import { Map, View } from "ol";
 import TileLayer from "ol/layer/Tile";
 import VectorLayer from "ol/layer/Vector";
-import { fromLonLat, transformExtent } from "ol/proj";
-import {OSM, XYZ} from "ol/source";
+import { fromLonLat } from "ol/proj";
 import VectorSource from "ol/source/Vector";
 import Icon from "ol/style/Icon";
 import Style from "ol/style/Style";
 import { useEffect, useRef } from "react";
-import {loadCity, loadCommercialArea, loadLegalDong} from "../actions";
 
 interface Props {
     center?: [number, number],
