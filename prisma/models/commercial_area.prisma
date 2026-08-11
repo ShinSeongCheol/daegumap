@@ -8,34 +8,34 @@ model CommercialArea {
   business_sub_category_name              String
   business_detail_category_code           String
   business_detail_category_name           String
-  standard_industrial_classification_code String
-  standard_industrial_classification_name String
+  standard_industrial_classification_code String?
+  standard_industrial_classification_name String?
   city_code                               Int
   city_name                               String
   district_code                           Int
   district_name                           String
   dong_code                               Int
   dong_name                               String
-  legal_dong_code                         Int
+  legal_dong_code                         BigInt
   legal_dong_name                         String
-  lot_number_code                         Int
+  lot_number_code                         BigInt
   land_classification_code                Int
   land_classification_name                String
-  base_lot_number                         Int
-  lot_number_sub_number                   String
+  base_lot_number                         Int?
+  lot_number_sub_number                   String?
   lot_based_address                       String
-  road_name_code                          Int
+  road_name_code                          BigInt
   road_name                               String
   building_main_lot_number                Int
-  building_sub_number                     String
-  building_management_number              Float
-  building_name                           String
+  building_sub_number                     Int?
+  building_management_number              Float?
+  building_name                           String?
   road_name_address                       String
   old_postal_code                         Int
   new_postal_code                         Int
-  dong_information                        String
-  floor_information                       String
-  ho_information                          String
+  dong_information                        String?
+  floor_information                       String?
+  ho_information                          String?
   longitude                               Float
   latitude                                Float
 
