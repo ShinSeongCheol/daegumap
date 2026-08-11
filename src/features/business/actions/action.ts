@@ -160,6 +160,15 @@ export async function uploadBusiness(commercialArea: CommercialArea) {
 }
 
 export async function uploadBusinessChunk(commercialAreas: CommercialArea[]) {
-    const res = await prisma.commercialArea.createMany({data:commercialAreas})
+    const res = await prisma.commercialArea.createMany({
+        data:commercialAreas,
+        skipDuplicates: true,
+    })
     return res.count;
+}
+
+export async function refreshStatisticView() {
+    await prisma.$executeRawUnsafe('REFRESH MATERIALIZED VIEW city_business_stats');
+    await prisma.$executeRawUnsafe('REFRESH MATERIALIZED VIEW district_business_stats');
+    await prisma.$executeRawUnsafe('REFRESH MATERIALIZED VIEW legal_dong_business_stats');
 }

@@ -4,7 +4,7 @@ import {Dialog, DialogClose, DialogContent, DialogFooter, DialogTitle, DialogTri
 import {Button} from "@/components/ui/button";
 import {Field, FieldGroup, FieldLabel, FieldSet} from "@/components/ui/field";
 import {Input} from "@/components/ui/input";
-import {parseCsv, uploadBusinessChunk} from "@/src/features/business/actions";
+import {parseCsv, refreshStatisticView, uploadBusinessChunk} from "@/src/features/business/actions";
 import {SyntheticEvent, useState, useTransition} from "react";
 import {Progress, ProgressLabel, ProgressValue} from "@/components/ui/progress";
 
@@ -22,7 +22,7 @@ export function CsvUploadForm() {
             const commercialAreas = await parseCsv(formData);
             const totalCount = commercialAreas.length;
 
-            const chunkSize = 100;
+            const chunkSize = 300;
             let processedCount = 0;
             for (let i=0; i<totalCount; i+=chunkSize) {
                 const chunk = commercialAreas.slice(i,i + chunkSize);
@@ -31,6 +31,8 @@ export function CsvUploadForm() {
                 processedCount = processedCount + chunk.length;
                 setProgressValue((processedCount / totalCount) * 100);
             }
+
+            await refreshStatisticView();
             setProgressValue(0);
         })
     }

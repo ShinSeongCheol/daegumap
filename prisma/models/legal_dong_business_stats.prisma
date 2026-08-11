@@ -1,0 +1,13 @@
+view LegalDongBusinessStats {
+  city_code       Int
+  city_name       String
+  district_code   Int
+  district_name   String
+  legal_dong_code Int
+  legal_dong_name String
+  total_count     BigInt
+  longitude       Float
+  latitude        Float
+
+  @@map("legal_dong_business_stats")
+}

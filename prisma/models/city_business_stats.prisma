@@ -1,0 +1,9 @@
+view CityBusinessStats {
+  city_code   Int
+  city_name   String
+  total_count BigInt
+  longitude   Float
+  latitude    Float
+
+  @@map("city_business_stats")
+}

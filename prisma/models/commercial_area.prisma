@@ -26,13 +26,13 @@ model CommercialArea {
   lot_based_address                       String
   road_name_code                          BigInt
   road_name                               String
-  building_main_lot_number                Int
+  building_main_lot_number                Int?
   building_sub_number                     Int?
   building_management_number              Float?
   building_name                           String?
   road_name_address                       String
-  old_postal_code                         Int
-  new_postal_code                         Int
+  old_postal_code                         Int?
+  new_postal_code                         Int?
   dong_information                        String?
   floor_information                       String?
   ho_information                          String?

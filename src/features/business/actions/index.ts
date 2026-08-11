@@ -1,1 +1,1 @@
-export {parseCsv, uploadBusiness, uploadBusinessChunk} from './action';
+export {parseCsv, uploadBusiness, uploadBusinessChunk, refreshStatisticView} from './action';
